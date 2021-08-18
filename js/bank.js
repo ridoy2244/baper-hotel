@@ -1,32 +1,32 @@
 function getInputValue(inputId) {
-    const depositInput = document.getElementById(inputId);
-    const newDepositAmount = depositInput.value;
-    depositInput.value = '';
-    return newDepositAmount;
+    const inputValue = document.getElementById(inputId);
+    const amountValue = inputValue.value;
+    inputValue.value = '';
+    return amountValue;
+}
+function updateTotalValue(totalValue,amountValue) {
+    const depositTotal = document.getElementById(totalValue);
+    const previousDeposit = depositTotal.innerText;
     
-
+    const currentDeposit = parseFloat(previousDeposit) + parseFloat(amountValue);
+    depositTotal.innerText = currentDeposit;
+    
 }
 
 
 // deposit & widthraw
 
 document.getElementById('deposit-btn').addEventListener('click', function () {
-    // const depositInput = document.getElementById('deposit-input');
-    // const newDepositAmount = depositInput.value;
-    const newDepositAmount = getInputValue('deposit-input');
-
-
-    const depositTotal = document.getElementById('deposit');
-    const previousDeposit = depositTotal.innerText;
     
-    const currentDeposit = parseFloat(previousDeposit) + parseFloat(newDepositAmount);
-    depositTotal.innerText = currentDeposit;
-    
+    const amountValue = getInputValue('deposit-input');
 
+   
+    updateTotalValue('deposit',amountValue);
+    
     const previousBalance = document.getElementById('total-balance');
     const previousBalanceText = previousBalance.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceText);
-    const totalBalance = previousBalanceTotal + currentDeposit;
+    const totalBalance = previousBalanceTotal +parseFloat(amountValue);
     previousBalance.innerText = totalBalance;
      
 });
@@ -34,20 +34,18 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 // widthraw
 
 document.getElementById('widthraw-btn').addEventListener('click', function () {
-    // const widthrawInput = document.getElementById('widthraw-input');
-    // const widthrawNow = widthrawInput.value;
+    
     const widthrawNow = getInputValue('widthraw-input');
 
-    const previousWidthraw = document.getElementById('widthraw');
-    const previousWidthrawTotal = previousWidthraw.innerText;
-    const totalWidthraw = parseFloat(previousWidthrawTotal) + parseFloat(widthrawNow);
-    previousWidthraw.innerText = totalWidthraw;
+    updateTotalValue('widthraw', widthrawNow)
+
+    // updateTotalValue(;
 
     const previousBalance = document.getElementById('total-balance');
     const previousBalanceText = previousBalance.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceText);
 
-    const endBalance = previousBalanceTotal - totalWidthraw;
+    const endBalance = previousBalanceTotal - widthrawNow;
     previousBalance.innerText = endBalance;
    
     
