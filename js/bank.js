@@ -5,12 +5,11 @@ function getInputValue(inputId) {
     return amountValue;
 }
 function updateTotalValue(totalValue,amountValue) {
-    const depositTotal = document.getElementById(totalValue);
-    const previousDeposit = depositTotal.innerText;
+    const totalTaka = document.getElementById(totalValue);
+    const previousValue = totalTaka.innerText;
     
-    const currentDeposit = parseFloat(previousDeposit) + parseFloat(amountValue);
-    depositTotal.innerText = currentDeposit;
-    
+    const currentValue = parseFloat(previousValue) + parseFloat(amountValue);
+    totalTaka.innerText = currentValue; 
 }
 function total(amountValue, isadd) {
     const previousBalance = document.getElementById('total-balance');
@@ -23,8 +22,7 @@ function total(amountValue, isadd) {
     else {
         const totalBalance = previousBalanceTotal - parseFloat(amountValue);
         previousBalance.innerText = totalBalance;
-    }
-   
+    } 
 }
 
 
