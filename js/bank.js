@@ -1,5 +1,5 @@
-function getInputValue() {
-    const depositInput = document.getElementById('deposit-input');
+function getInputValue(inputId) {
+    const depositInput = document.getElementById(inputId);
     const newDepositAmount = depositInput.value;
     depositInput.value = '';
     return newDepositAmount;
@@ -13,7 +13,7 @@ function getInputValue() {
 document.getElementById('deposit-btn').addEventListener('click', function () {
     // const depositInput = document.getElementById('deposit-input');
     // const newDepositAmount = depositInput.value;
-    const newDepositAmount = getInputValue();
+    const newDepositAmount = getInputValue('deposit-input');
 
 
     const depositTotal = document.getElementById('deposit');
@@ -34,8 +34,9 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 // widthraw
 
 document.getElementById('widthraw-btn').addEventListener('click', function () {
-    const widthrawInput = document.getElementById('widthraw-input');
-    const widthrawNow = widthrawInput.value;
+    // const widthrawInput = document.getElementById('widthraw-input');
+    // const widthrawNow = widthrawInput.value;
+    const widthrawNow = getInputValue('widthraw-input');
 
     const previousWidthraw = document.getElementById('widthraw');
     const previousWidthrawTotal = previousWidthraw.innerText;
@@ -52,7 +53,7 @@ document.getElementById('widthraw-btn').addEventListener('click', function () {
     
 
 
-    widthrawInput.value = '';
+    // widthrawInput.value = '';
     
 
 })
